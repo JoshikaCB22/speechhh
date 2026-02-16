@@ -1,0 +1,40 @@
+artificial : AA2 R T AH0 F IH1 SH AH0 L
+intelligence : IH0 N T EH1 L AH0 JH AH0 N S
+is : IH1 Z
+used : Y UW1 Z D
+in : IH0 N
+everyday : EH1 V R IY0 D EY1
+life : L AY1 F
+to : T UW1
+power : P AW1 ER0
+voice : V OY1 S
+assistants : AH0 S IH1 S T AH0 N T S
+recommend : R EH2 K AH0 M EH1 N D
+videos : V IH1 D IY0 OW0 Z
+and : AH0 N D
+products : P R AA1 D AH0 K T S
+detect : D IH0 T EH1 K T
+spam : S P AE1 M
+and : AH0 N D
+fraud : F R AO1 D
+improve : IH0 M P R UW1 V
+medical : M EH1 D AH0 K AH0 L
+diagnosis : D AY2 AH0 G N OW1 S AH0 S
+enable : EH0 N EY1 B AH0 L
+selfdriving : N/A
+features : F IY1 CH ER0 Z
+in : IH0 N
+vehicles : V IY1 HH IH0 K AH0 L Z
+and : AH0 N D
+make : M EY1 K
+apps : AE1 P S
+and : AH0 N D
+websites : N/A
+smarter : S M AA1 R T ER0
+by : B AY1
+learning : L ER1 N IH0 NG
+from : F R AH1 M
+user : Y UW1 Z ER0
+behavior : B IH0 HH EY1 V Y ER0
+over : OW1 V ER0
+time : T AY1 M
