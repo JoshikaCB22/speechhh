@@ -1,0 +1,151 @@
+.practice-page { max-width: 1100px; }
+
+.practice-grid {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 900px) { .practice-grid { grid-template-columns: 1fr; } }
+
+.practice-left { display: flex; flex-direction: column; gap: 16px; }
+
+.level-tabs {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;
+}
+
+.level-tab {
+  padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border);
+  background: var(--bg3); color: var(--text2); font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: all 0.15s; font-family: inherit; text-transform: capitalize;
+}
+.level-tab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+.level-tab:hover:not(.active) { border-color: var(--primary); color: var(--primary); }
+
+.word-toggle {
+  display: flex; background: var(--bg3); border-radius: 8px; padding: 3px; gap: 3px;
+}
+.toggle-btn {
+  flex: 1; padding: 6px; border-radius: 6px; border: none;
+  background: none; color: var(--text2); font-size: 13px; font-weight: 600;
+  cursor: pointer; font-family: inherit; transition: all 0.15s;
+}
+.toggle-btn.active { background: var(--card2); color: var(--text); }
+
+.word-display {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 12px; padding: 16px; background: var(--bg3); border-radius: 12px;
+}
+.target-word { font-size: 28px; font-weight: 800; color: var(--primary); }
+
+.recorder-card { text-align: center; }
+
+.mic-area {
+  position: relative; display: flex; align-items: center; justify-content: center;
+  height: 120px; margin-bottom: 16px;
+}
+
+.recording-rings {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+}
+.ring {
+  position: absolute; border-radius: 50%; border: 2px solid var(--danger);
+  animation: ripple 1.5s ease-out infinite;
+}
+.r1 { width: 80px; height: 80px; animation-delay: 0s; }
+.r2 { width: 100px; height: 100px; animation-delay: 0.3s; }
+.r3 { width: 120px; height: 120px; animation-delay: 0.6s; }
+
+@keyframes ripple {
+  0% { opacity: 0.8; transform: scale(0.8); }
+  100% { opacity: 0; transform: scale(1.2); }
+}
+
+.mic-btn {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border: none; font-size: 28px; cursor: pointer;
+  transition: all 0.2s; position: relative; z-index: 1;
+  box-shadow: 0 4px 20px rgba(108,99,255,0.4);
+}
+.mic-btn:hover { transform: scale(1.05); }
+.mic-btn.recording {
+  background: linear-gradient(135deg, var(--danger), #cc3355);
+  box-shadow: 0 4px 20px rgba(255,101,132,0.4);
+}
+
+.recording-status {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  color: var(--danger); font-size: 14px; font-weight: 600; margin-bottom: 12px;
+}
+.rec-dot {
+  width: 8px; height: 8px; background: var(--danger); border-radius: 50%;
+}
+
+.audio-preview { margin-top: 8px; }
+
+.practice-error {
+  background: rgba(255,101,132,0.1); border: 1px solid rgba(255,101,132,0.3);
+  color: var(--danger); padding: 10px 14px; border-radius: 10px;
+  font-size: 13px; margin-top: 12px;
+}
+
+.achievement-toast {
+  background: linear-gradient(135deg, rgba(108,99,255,0.2), rgba(255,101,132,0.2));
+  border: 1px solid var(--primary); border-radius: 12px;
+  padding: 14px 20px; margin-bottom: 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-weight: 600; font-size: 14px;
+  animation: slideDown 0.3s ease;
+}
+@keyframes slideDown { from { transform: translateY(-10px); opacity: 0; } to { transform: none; opacity: 1; } }
+.achievement-toast button { background: none; border: none; color: var(--text2); cursor: pointer; font-size: 16px; }
+
+/* Result card */
+.result-top { display: flex; align-items: center; gap: 24px; margin-bottom: 20px; }
+
+.score-circle { position: relative; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.score-center { position: absolute; display: flex; align-items: baseline; gap: 2px; }
+.score-num { font-size: 32px; font-weight: 800; }
+.score-pct { font-size: 14px; font-weight: 600; color: var(--text2); }
+
+.result-meta { flex: 1; }
+.result-word { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.rword { font-size: 18px; font-weight: 700; }
+
+.score-label {
+  display: inline-block; padding: 4px 12px; border-radius: 20px;
+  font-size: 13px; font-weight: 700; margin-top: 4px;
+}
+.score-label.good { background: rgba(67,233,123,0.15); color: var(--success); }
+.score-label.ok { background: rgba(247,151,30,0.15); color: var(--warning); }
+.score-label.bad { background: rgba(255,101,132,0.15); color: var(--danger); }
+
+.feedback-box {
+  background: var(--bg3); border-radius: 12px; padding: 16px; margin-bottom: 16px;
+}
+.feedback-box h4 { font-size: 13px; color: var(--text2); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+.feedback-box p { font-size: 14px; line-height: 1.6; }
+
+.phoneme-section { margin-bottom: 16px; }
+.phoneme-section h4 { font-size: 13px; color: var(--text2); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+.phoneme-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.ph-label { font-size: 12px; color: var(--text3); min-width: 50px; }
+.phonemes { display: flex; flex-wrap: wrap; gap: 6px; }
+.phoneme {
+  padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: 700;
+  font-family: monospace;
+}
+.phoneme.match { background: rgba(67,233,123,0.15); color: var(--success); }
+.phoneme.miss { background: rgba(255,101,132,0.15); color: var(--danger); }
+
+.tips { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+.tip { font-size: 13px; color: var(--text2); background: var(--bg3); padding: 8px 12px; border-radius: 8px; }
+
+.placeholder-card { text-align: center; padding: 48px 32px; }
+.placeholder-icon { font-size: 56px; margin-bottom: 16px; }
+.placeholder-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+.placeholder-card p { color: var(--text2); font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
+.tips-preview { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+.tips-preview p { font-size: 13px; color: var(--text2); background: var(--bg3); padding: 10px 14px; border-radius: 8px; }

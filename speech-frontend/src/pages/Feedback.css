@@ -1,0 +1,53 @@
+.feedback-page { max-width: 1100px; }
+
+.feedback-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+@media (max-width: 900px) { .feedback-layout { grid-template-columns: 1fr; } }
+
+.feedback-list { display: flex; flex-direction: column; gap: 8px; }
+
+.feedback-item {
+  padding: 14px 16px; cursor: pointer;
+  transition: all 0.15s; border: 1px solid var(--border);
+}
+.feedback-item:hover { border-color: var(--primary); }
+.feedback-item.active { border-color: var(--primary); background: rgba(108,99,255,0.08); }
+
+.fi-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.fi-word { font-weight: 700; font-size: 15px; }
+.fi-score { font-size: 16px; font-weight: 800; }
+.fi-bottom { display: flex; justify-content: space-between; align-items: center; }
+.fi-date { font-size: 11px; color: var(--text3); }
+
+.feedback-detail { padding: 28px; }
+
+.fd-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+.fd-word { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+
+.fd-score-wrap { text-align: center; }
+.fd-score { font-size: 40px; font-weight: 800; line-height: 1; }
+.fd-score-label { font-size: 12px; color: var(--text2); }
+
+.fd-score-bar { height: 8px; background: var(--bg3); border-radius: 4px; overflow: hidden; margin-bottom: 24px; }
+.fd-score-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+
+.fd-section { margin-bottom: 20px; }
+.fd-section h4 { font-size: 12px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+.fd-section p { font-size: 14px; line-height: 1.7; color: var(--text2); }
+
+.phoneme-compare {}
+.ph-match-rate { margin-bottom: 10px; font-size: 14px; }
+.phoneme-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.ph-label { font-size: 12px; color: var(--text3); min-width: 50px; }
+.phonemes { display: flex; flex-wrap: wrap; gap: 6px; }
+.phoneme { padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; font-family: monospace; }
+.phoneme.match { background: rgba(67,233,123,0.15); color: var(--success); }
+.phoneme.miss { background: rgba(255,101,132,0.15); color: var(--danger); }
+.ph-tips { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+.tip { font-size: 13px; color: var(--text2); background: var(--bg3); padding: 8px 12px; border-radius: 8px; }
+
+.fd-meta { display: flex; gap: 16px; font-size: 12px; color: var(--text3); margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }

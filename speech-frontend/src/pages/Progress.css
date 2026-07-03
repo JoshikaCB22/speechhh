@@ -1,0 +1,43 @@
+.progress-page { max-width: 1100px; }
+
+.progress-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.progress-stat {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 20px 16px; text-align: center; gap: 6px;
+}
+.ps-icon { font-size: 24px; }
+.ps-value { font-size: 22px; font-weight: 800; }
+.ps-label { font-size: 12px; color: var(--text2); }
+
+.progress-charts {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin-bottom: 16px;
+}
+@media (max-width: 900px) { .progress-charts { grid-template-columns: 1fr; } }
+
+.progress-bottom {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 900px) { .progress-bottom { grid-template-columns: 1fr; } }
+
+.no-data {
+  height: 200px; display: flex; align-items: center; justify-content: center;
+  color: var(--text3); font-size: 14px;
+}
+
+.skill-bars { display: flex; flex-direction: column; gap: 16px; padding-top: 8px; }
+
+.skill-bar-item {}
+.skill-bar-header { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.skill-name { font-size: 13px; font-weight: 600; text-transform: capitalize; }
+.skill-score { font-size: 13px; font-weight: 700; }
+
+.skill-track { height: 8px; background: var(--bg3); border-radius: 4px; overflow: hidden; }
+.skill-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }

@@ -1,0 +1,6 @@
+venv/
+data/
+reference_audio/
+*.xlsx
+*.npy
+__pycache__/
