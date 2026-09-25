@@ -3,6 +3,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from datetime import timedelta
+import os
 import models
 import schemas
 import auth
@@ -40,9 +41,24 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# Configure CORS for development and production
+environment = os.getenv("ENVIRONMENT", "development")
+if environment == "production":
+    allowed_origins = [
+        "https://speechcare-frontend.onrender.com",
+        "https://speechcare-backend.onrender.com",
+    ]
+else:
+    allowed_origins = [
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "http://127.0.0.1:5173",
+        "http://127.0.0.1:3000",
+    ]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000", "http://127.0.0.1:5173"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

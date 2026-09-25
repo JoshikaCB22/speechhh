@@ -13,4 +13,21 @@ export default defineConfig({
       }
     }
   },
+  // Environment variables starting with VITE_ are exposed to client code
+  define: {
+    __ENV__: JSON.stringify(process.env.NODE_ENV || 'development'),
+  },
+  build: {
+    // Optimize build for production
+    minify: 'terser',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          charts: ['recharts'],
+        }
+      }
+    }
+  }
 })

@@ -87,6 +87,13 @@ SPEECH_RULES = [
     ),
 ]
 
+def word_match(phrase: str, text: str) -> bool:
+    """Check if phrase exists as a complete phrase or word in text, with word boundaries"""
+    import re
+    # Create a pattern that matches the phrase with word boundaries
+    pattern = r'\b' + re.escape(phrase) + r'\b'
+    return bool(re.search(pattern, text))
+
 def get_reply(message: str) -> str:
     msg = message.lower().strip()
 
@@ -95,17 +102,20 @@ def get_reply(message: str) -> str:
         return "Hello! I'm SpeechCare AI 🗣️\nI can help you with pronunciation tips, speech exercises, phonemes, fluency, and more.\nWhat would you like to work on today?"
 
     # Thanks
-    if any(w in msg for w in ["thank you", "thanks", "great help", "that helped"]):
+    if any(word_match(w, msg) for w in ["thank you", "thanks", "great help", "that helped"]):
         return "You're welcome! Keep up the great work. Consistency is the key to improvement. Feel free to ask anything else! 🎯"
 
     # Goodbye
-    if any(w in msg for w in ["bye", "goodbye", "see you", "take care"]):
+    if any(word_match(w, msg) for w in ["bye", "goodbye", "see you", "take care"]):
         return "Goodbye! Keep practicing and you'll see great improvement. Come back anytime! 🗣️"
 
-    # Match against rules using full phrase matching
-    for triggers, response in SPEECH_RULES:
-        for trigger in triggers:
-            if trigger in msg:
+    # Match against rules - sort by specificity (longer phrases first)
+    # This ensures more specific matches take priority over partial matches
+    sorted_rules = sorted(SPEECH_RULES, key=lambda x: max(len(t) for t in x[0]), reverse=True)
+    
+    for triggers, response in sorted_rules:
+        for trigger in sorted(triggers, key=len, reverse=True):
+            if word_match(trigger, msg):
                 return response
 
     # Fallback
