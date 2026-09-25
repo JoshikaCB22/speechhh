@@ -1,12 +1,10 @@
 services:
-  # FastAPI Backend
   - type: web
     name: speechcare-backend
     runtime: python
-    runtimeVersion: 3.11.9
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
-    appDir: ./Speech_Backend
+    dir: ./Speech_Backend
     envVars:
       - key: DATABASE_URL
         value: sqlite:///./speech_therapy.db
@@ -14,17 +12,13 @@ services:
         value: your-secret-key-change-this-in-production
       - key: ENVIRONMENT
         value: production
-    autoDeploy: true
-    healthCheckPath: /
 
-  # React Frontend
   - type: web
     name: speechcare-frontend
     runtime: node
     buildCommand: npm install && npm run build
     startCommand: npm start
-    appDir: ./speech-frontend
+    dir: ./speech-frontend
     envVars:
       - key: VITE_API_URL
         value: https://speechcare-backend.onrender.com
-    autoDeploy: true
