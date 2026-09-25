@@ -13,6 +13,11 @@ export default defineConfig({
       }
     }
   },
+  preview: {
+    port: 4173,
+    host: '0.0.0.0',
+    strictPort: false,
+  },
   // Environment variables starting with VITE_ are exposed to client code
   define: {
     __ENV__: JSON.stringify(process.env.NODE_ENV || 'development'),
