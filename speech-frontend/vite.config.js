@@ -17,6 +17,12 @@ export default defineConfig({
     port: 4173,
     host: '0.0.0.0',
     strictPort: false,
+    allowedHosts: [
+      'speechhh-1.onrender.com',
+      'speechcare-frontend.onrender.com',
+      'localhost',
+      '127.0.0.1'
+    ]
   },
   // Environment variables starting with VITE_ are exposed to client code
   define: {
