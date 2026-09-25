@@ -3,7 +3,7 @@ services:
     name: speechcare-backend
     runtime: python
     buildCommand: pip install -r Speech_Backend/requirements.txt
-    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    startCommand: sh -c 'PYTHONPATH=/opt/render/project/src:$PYTHONPATH uvicorn app:app --host 0.0.0.0 --port $PORT'
     envVars:
       - key: DATABASE_URL
         value: sqlite:///./speech_therapy.db
