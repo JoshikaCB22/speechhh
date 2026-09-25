@@ -3,36 +3,27 @@ services:
   - type: web
     name: speechcare-backend
     runtime: python
-    pythonVersion: 3.11
+    runtimeVersion: 3.11.9
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     appDir: ./Speech_Backend
     envVars:
       - key: DATABASE_URL
-        scope: build,runtime
         value: sqlite:///./speech_therapy.db
       - key: JWT_SECRET_KEY
-        scope: build,runtime
         value: your-secret-key-change-this-in-production
-      - key: ACCESS_TOKEN_EXPIRE_MINUTES
-        scope: build,runtime
-        value: 30
       - key: ENVIRONMENT
-        scope: build,runtime
         value: production
     autoDeploy: true
     healthCheckPath: /
 
   # React Frontend
-  - type: web
+  - type: static
     name: speechcare-frontend
-    runtime: node
     buildCommand: npm install && npm run build
-    startCommand: npm run preview
-    appDir: ./speech-frontend
     staticPublishPath: ./dist
+    appDir: ./speech-frontend
     envVars:
       - key: VITE_API_URL
-        scope: build,runtime
         value: https://speechcare-backend.onrender.com
     autoDeploy: true
