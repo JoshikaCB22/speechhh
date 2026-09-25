@@ -2,8 +2,8 @@ services:
   - type: web
     name: speechcare-backend
     runtime: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    buildCommand: pip install -r Speech_Backend/requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: DATABASE_URL
         value: sqlite:///./speech_therapy.db
@@ -15,8 +15,8 @@ services:
   - type: web
     name: speechcare-frontend
     runtime: node
-    buildCommand: npm install && npm run build
-    startCommand: npm start
+    buildCommand: cd speech-frontend && npm install && npm run build
+    startCommand: cd speech-frontend && npm start
     envVars:
       - key: VITE_API_URL
         value: https://speechcare-backend.onrender.com
