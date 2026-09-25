@@ -15,8 +15,8 @@ services:
   - type: web
     name: speechcare-frontend
     runtime: node
-    buildCommand: cd speech-frontend && npm install && npm run build
-    startCommand: cd speech-frontend && npm start
+    buildCommand: npm install --prefix speech-frontend && npm run build --prefix speech-frontend
+    startCommand: npm start --prefix speech-frontend
     envVars:
       - key: VITE_API_URL
         value: https://speechcare-backend.onrender.com
