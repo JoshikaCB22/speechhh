@@ -18,10 +18,11 @@ services:
     healthCheckPath: /
 
   # React Frontend
-  - type: static
+  - type: web
     name: speechcare-frontend
+    runtime: node
     buildCommand: npm install && npm run build
-    staticPublishPath: ./dist
+    startCommand: npm start
     appDir: ./speech-frontend
     envVars:
       - key: VITE_API_URL
